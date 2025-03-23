@@ -15,8 +15,6 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version-file: ${{ inputs.service-path }}/.nvmrc
-          cache: "npm"
-          cache-dependency-path: ${{ inputs.service-path }}/package-lock.json
+          node-version-file: .nvmrc
       - name: Echo test
         run: echo "hello world"
