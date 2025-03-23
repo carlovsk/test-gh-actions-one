@@ -1,0 +1,22 @@
+name: test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ${{ inputs.service-path }}/.nvmrc
+          cache: "npm"
+          cache-dependency-path: ${{ inputs.service-path }}/package-lock.json
+      - name: Echo test
+        run: echo "hello world"
